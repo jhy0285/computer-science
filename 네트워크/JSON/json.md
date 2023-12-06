@@ -32,42 +32,49 @@ python, javascript, java등 여러언어에서 데이터교환형식으로 쓰�
 JSON은 기본적으로 자바스크립트 객체 문법을 기반으로 하기 떄문에, 유사한 점이 많지만, 차이점도 존재합니다.
 
 1. 자바스크립트객체에서 키(KEY)값은 따옴표 없이 쓸 수 있지만, <br/> JSON에서는 반드시 쌍따옴표를 붙여야 합니다.
-```json
+```text
 JS object의 경우
 {   
     name : "Young Jin",
     age : 25
-};
-//따옴표 없이 KEY값 선언 가능
-        
+}
+// 따옴표 없이 KEY값 선언 가능
+
 JSON의 경우
 {   
-    "name" : "Young Jin",
-    "age" : 25
-};
-//반드시 쌍따옴표만으로 KEY값 선언 가능
+"name" : "Young Jin",
+"age" : 25
+}
+// 반드시 쌍따옴표만으로 KEY값 선언 가능
 ```
+
 2. 자바스크립트객체에서 문자열 값은 어떠한 형태의 따옴표도 사용 가능('' ,"" 모두가능) 
 하지만 <br/>  JSON에서는 반드시 쌍따옴표로 감싸야 합니다.
-```json
+```text
 JS object의 경우
 {   
     name : "Young Jin",
     gender : 'male'
-};
+}
 //문자열 선언시 '', "" 모두가능
-        
+
 JSON의 경우
 {   
-    "name" : "Young Jin",
-    "age" : "male"
-};
-//문자열 선언시 반드시 ""만 가능
+"name" : "Young Jin",
+"age" : "male"
+}
+//문자열 선언시 반드시 "" 만 가능
 ```
+
+
+
+
 3. javascript object와 유사합니다만 undefined, 메서드 등을 포함할 수 없습니다. <br/> 
 즉, 문자열(string), 숫자(number), 불리언(boolean), 배열(array), 객체(object), null 은 가능합니다.
-```json
-### JS object ###
+
+```text
+JS object의 경우
+
 let person = {
   "name": "John",
   "age": 30,
@@ -82,22 +89,27 @@ let person = {
   },
   "sayBye" : undefined
 };
-//JSobject에 경우 sayHello 라는 메서드와 sayBye라는 undefined를  값으로 가지고 있음
+```
+JSobject에 경우 sayHello 라는 메서드와 sayBye라는 undefined를  값으로 가지고 있습니다.
 
-### JSON ###
-let person = {
+
+```text
+JSON에 경우
+
+{
   "name": "John", //String 가능
   "age": 30, //number 가능
   "isStudent": false, //boolean 가능
   "hobbies": ["reading", "sports"], //array 가능
-  "address": { //object가능
+  "address": {              //object가능
     "city": "New York",
     "zipcode": "10001"
   },
     // 그러나 메서드, undefined는 사라짐
-};
-//즉, JSON으로 변환 할 경우 sayHello, sayBye 사라짐
+}
 ```
+JSON으로 변환 할 경우 sayHello, sayBye 가 사라집니다.
+
 그리고 예시에는 없지만 JSON은 null도 값으로 가질 수 있습니다!
 
 ### 3. 직렬화와 역직렬화
@@ -120,14 +132,14 @@ const jsonData = JSON.stringify(data);
 console.log(jsonData)
 ```
 - Python 진영에서는 key : value의 해쉬테이블인 Dictionary 타입의 자료형을 </br> JSON String으로 변환(직렬화)해서 HTTP통신에 사용합니다.
-```python
+```text
 import json
 
 # 요청에 포함할 JSON 데이터 (Python 사전 형태)
 data = {
     "name": "Alice",
     "age": 25,
-    "isStudent": True,
+    "isStudent": True
 }
 
 # Python 사전을 JSON 문자열로 직렬화
@@ -153,7 +165,7 @@ console.log(parsedData.age);         // 출력: 25
 console.log(parsedData.isStudent);   // 출력: true
 ```
 - 파이썬에서는 JSON데이터를 key : value의 해쉬테이블인 dict 형식으로 변환(역직렬화)해서 사용합니다.
-```python
+```text
 import json
 
 # JSON 형식의 문자열
@@ -174,7 +186,7 @@ print(data['isStudent'])  # 출력: True
 key : value 쌍일 수 있고, 이는 계속 재귀적으로 가능하다.
 
 
-```json
+```text
   {
     "name" : {
         "firstname" : "no",
@@ -187,7 +199,7 @@ key : value 쌍일 수 있고, 이는 계속 재귀적으로 가능하다.
 ### 5. Array 형식으로도 가능하다
 JSON 데이터를 배열형식으로 여러개 가질수 있는데, 이를 
 JSON Array라고 한다.
-```json
+```text
 [
  {
   "name" : {
@@ -227,8 +239,7 @@ XML은
 
 이렇게 구성되어 있습니다.
 ```xml
-<!-- 프롤로그(Prologue) -->
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> <!-- 프롤로그(Prologue) -->
 <!-- 루트 요소 -->
 <OSTList> 
     <!-- 하위 요소들 -->
