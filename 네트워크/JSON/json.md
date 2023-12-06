@@ -302,6 +302,31 @@ sitemap.xml을 작성하는 이유는 아래와 같은 이유들이 있습니다
   이를 sitemap.xml이 방지하고 모든 페이지들을 크롤링할 수 있도록
   해줍니다.
 
+다음은 sitemap.xml의 예시 입니다.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>http://example.com/page1</loc>
+      <lastmod>2023-01-15</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>http://example.com/page2</loc>
+      <lastmod>2023-02-20</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+   <!-- 다른 페이지들의 정보 -->
+</urlset>
+```
+각 태그별 설명입니다.
+- ```<url>``` : 하나의 페이지임을 나타냅니다.
+- ```<loc>``` : 페이지의 URL을 의미합니다.
+- ```<lastmod>``` : 페이지가 마지막으로 업데이트된 날짜를 의미합니다.
+- ```<changefreq>``` : 페이지가 얼마나 자주 변경되는지를 의미합니다.
+- ```<priority>``` : 페이지의 우선순위를 나타냅니다.
 ### 5. JSON과 XML 비교
 
 일반적으로 JSON이 XML보다 용량 측면에서 더 가볍습니다. 
