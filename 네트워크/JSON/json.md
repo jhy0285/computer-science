@@ -2,17 +2,19 @@
 
 ## JSON이란?
 JSON(JavaScriptObjectNotation)은 **javascript 객체 문법**으로
-구조화된 **문자(텍스트) 기반의 데이터 교환 형식**을 말합니다. 
+구조화된 **문자(텍스트) 기반의 데이터 교환 형식**을 말합니다. </br>
+=> 걍 쉽게 말해 자바스크립트 객체 문법을 기반으로 데이터를 정의할껀데, 그게 텍스트타입인거임.
 
 python, javascript, java등 여러언어에서 데이터교환형식으로 쓰이며, 객체문법으로 표현하는 것
-말고도 배열, 문자열도 표현 가능합니다.
+말고도 배열, 문자열도 표현 가능합니다. </br>
+=> 밑에 보다보면 예시들 있음 참고하셈.
 
 형식은 중괄호({}) 안에 Key : Value 형식으로 들어가는 형식입니다.
 
 [JSON 구조 참조](https://www.json.org/json-en.html)
 
 아래는 JSON에 대한 대표적인 특징과 설명입니다.
-
+바로 들어갑니다!
 
 ### 1. 키 충돌이 일어날 경우, 선언시의 제일 밑에있는(제일최근에 입력한) </br></br> Value 값이 살아남는다.
 중복키 떄문에 키 충돌이 일어날 경우, 선언시의 제일 밑에있는(제일최근에 입력한)
@@ -56,38 +58,38 @@ JS object의 경우
     name : "Young Jin",
     gender : 'male'
 }
-//문자열 선언시 '', "" 모두가능
+//문자열 값을 선언시 '', "" 모두가능
 
 JSON의 경우
 {   
 "name" : "Young Jin",
 "age" : "male"
 }
-//문자열 선언시 반드시 "" 만 가능
+//문자열 값을 선언시 반드시 "" 만 가능
 ```
 
 
 
 
 3. javascript object와 유사합니다만 undefined, 메서드 등을 포함할 수 없습니다. <br/> 
-즉, 문자열(string), 숫자(number), 불리언(boolean), 배열(array), 객체(object), null 은 가능합니다.
+ => 즉, 문자열(string), 숫자(number), 불리언(boolean), 배열(array), 객체(object), null 은 모두 가능함.
 
 ```text
 JS object의 경우
 
 let person = {
-  "name": "John",
-  "age": 30,
-  "isStudent": false,
-  "hobbies": ["reading", "sports"],
-  "address": {
+  "name": "John", //String
+  "age": 30, //number
+  "isStudent": false, //boolean
+  "hobbies": ["reading", "sports"], //array
+  "address": {              //object
     "city": "New York",
     "zipcode": "10001"
   },
-  "sayHello": function() {
+  "sayHello": function() {  //메서드
     console.log("Hello!");
   },
-  "sayBye" : undefined
+  "sayBye" : undefined   //undefined
 };
 ```
 JSobject에 경우 sayHello 라는 메서드와 sayBye라는 undefined를  값으로 가지고 있습니다.
@@ -114,11 +116,14 @@ JSON으로 변환 할 경우 sayHello, sayBye 가 사라집니다.
 
 ### 3. 직렬화와 역직렬화
 1. 직렬화(Serialization)
-- 직렬화는 데이터 구조나 객체를 파일이나 네트워크를 통해 **전송 가능한 형태로 변환**하는 과정을 의미합니다.
+- 직렬화는 데이터 구조나 객체를 파일이나 네트워크를 통해 **전송 가능한 형태로 변환**하는 과정을 의미합니다.</br>
+=> 핵심은 무슨 형태든지 전송 목적에 맞는 형태로 바꾸는게 직렬화란 거임!
+
+
 - 이 과정에서 객체는 바이트 스트림, 텍스트 문자열 또는 다른 형태로 변환됩니다
 - 예를들어 JS진영에서는 JS object를 JSON String으로 변환(직렬화)해서 HTTP통신에 사용합니다.
 ```javascript
-//JavaScript 객체선언
+//JS object 선언
 const data = {
  name: 'Alice',
  age: 25,
@@ -135,14 +140,14 @@ console.log(jsonData)
 ```text
 import json
 
-# 요청에 포함할 JSON 데이터 (Python 사전 형태)
+# Dictionary 선언
 data = {
     "name": "Alice",
     "age": 25,
     "isStudent": True
 }
 
-# Python 사전을 JSON 문자열로 직렬화
+# Python 딕셔너리를 JSON 문자열로 직렬화
 json_data = json.dumps(data)
 
 # 출력 : '{"name": "Alice", "age": 25, "isStudent": true }'
@@ -168,10 +173,10 @@ console.log(parsedData.isStudent);   // 출력: true
 ```text
 import json
 
-# JSON 형식의 문자열
+# JSON 문자열 선언
 json_string = '{"name": "Alice", "age": 25, "isStudent": true}'
 
-# JSON 문자열을 파이썬의 데이터 구조로 역직렬화
+# JSON 문자열을 딕셔너리 구조로 역직렬화
 data = json.loads(json_string)
 
 # 역직렬화된 데이터 사용
@@ -192,9 +197,13 @@ key : value 쌍일 수 있고, 이는 계속 재귀적으로 가능하다.
         "firstname" : "no",
         "lastname" : "hongchul"
     },
-    "age" : 30
+    "age" : { 
+        "man-age" : 23 ,
+        "real-age" : 24
+    }
   }
-//name안에 firstname, lastname처럼 재귀적으로 선언 가능
+//name안에 firstname, lastname 
+//그리고 age안에 만나이, 실제나이 처럼 재귀적으로 선언가능
 ```
 ### 5. Array 형식으로도 가능하다
 JSON 데이터를 배열형식으로 여러개 가질수 있는데, 이를 
@@ -224,7 +233,8 @@ JSON Array라고 한다.
 
 ## XML이란?
 XML(Extensible Markup Language)은 데이터를 저장하고 전송하기 위해 마크업 언어를 쓰는 데이터 교환 형식입니다.
-
+</br>
+=> 그냥 JSON처럼 데이터 교환 형식인데 마크업 언어를 쓰는거 뿐임
 ### 1. 마크업 이란?
 
 마크업은 문서나 데이터의 구조를 표현하기 위해 일정한 규칙에 따라 특정 **표시나 태그를 사용**하여 문서를 작성하는 것입니다
@@ -233,7 +243,7 @@ XML(Extensible Markup Language)은 데이터를 저장하고 전송하기 위해
 
 ### 2. XML 구성
 XML은 
-1. 프롤로그 : XML문서의 버전과 인코딩을 지정하는 부분입니다.
+1. 프롤로그 : XML문서의 **버전과 인코딩**을 지정하는 부분입니다.
 2. 루트요소(단 하나만) : XML 문서의 최상위 요소이며, 하나의 단일한 루트 요소만을 가집니다.
 3. 하위 요소들 : 루트 요소 안에 포함되는 구조화된 데이터의 요소들입니다. </br> 각각은 또 다른 하위 요소들을 포함할 수도 있습니다.
 
@@ -331,13 +341,13 @@ sitemap.xml을 작성하는 이유는 아래와 같은 이유들이 있습니다
 
 일반적으로 JSON이 XML보다 용량 측면에서 더 가볍습니다. 
 
-이는 JSON이 불필요한 태그를 사용하지 않고 데이터를 더 간결하게 표현하기 때문입니다.
+이는 JSON이 **불필요한 태그를 사용하지 않고** 데이터를 더 간결하게 표현하기 때문입니다.
 
-JSON은 데이터를 효율적으로 표현하기 위해 중괄호와 배열 등의 간단한 구조를 사용하며,
+JSON은 데이터를 효율적으로 표현하기 위해 **중괄호와 배열 등의 간단한 구조를 사용**하며,
 
 이로 인해 더 적은 용량을 차지합니다. 
 
-XML은 태그들로 감싸인 구조로 데이터를 표현하기 때문에 일반적으로 JSON보다 용량이 더 크게 나타날 수 있습니다.
+**XML은 태그들로 감싸인 구조**로 데이터를 표현하기 때문에 일반적으로 JSON보다 용량이 더 크게 나타날 수 있습니다.
 
 JSON
 ```json
